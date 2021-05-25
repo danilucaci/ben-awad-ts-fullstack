@@ -9,6 +9,7 @@ import { Post } from "./entities/Post";
 import microConfig from "./mikro-orm.config";
 import { HelloResolver } from "./resolvers/hello";
 import { PostResolver } from "./resolvers/post";
+import { UserResolver } from "./resolvers/user";
 
 async function main() {
   try {
@@ -27,7 +28,7 @@ async function main() {
 
     const apolloServer = new ApolloServer({
       schema: await buildSchema({
-        resolvers: [HelloResolver, PostResolver],
+        resolvers: [HelloResolver, PostResolver, UserResolver],
         validate: false,
       }),
       context: () => ({
